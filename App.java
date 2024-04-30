@@ -1,9 +1,9 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        String[]resultList = new String[10];
-        int index = 0;
+        ArrayList<String> resultList = new ArrayList<String>();
 
         Scanner sc = new Scanner(System.in);
 
@@ -34,20 +34,19 @@ public class App {
                     break;
             }
             System.out.println("결과: " + result);
-            if(index <= 9) {
-                resultList[index] = firstNum + " " + real_operator + " " + secondNum + " = " + result;
-            }else{
-                for(int i=0; i<9; i++){
-                    resultList[i] = resultList[i+1];
-                }
-                resultList[9] = firstNum + " " + real_operator + " " + secondNum + " = " + result;
+            resultList.add(firstNum + " " + real_operator + " " + secondNum + " = " + result);
+
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            String remove = sc.nextLine();
+            if (remove.equals("remove")) {
+                resultList.remove(0);
             }
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String exit = sc.nextLine();
             if (exit.equals("exit")) {
                 break;
             }
-            index++;
         }
 //        int b = 1;
 //        for(String a : resultList){
