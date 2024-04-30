@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
+        String[]resultList = new String[10];
+        int index = 0;
 
         Scanner sc = new Scanner(System.in);
 
@@ -15,7 +17,7 @@ public class App {
             String operator = sc.nextLine();
             char real_operator = operator.charAt(0);
 
-            double result = 0;
+            int result = 0;
 
             switch (real_operator) {
                 case '+':
@@ -28,16 +30,20 @@ public class App {
                     result = firstNum * secondNum;
                     break;
                 case '/':
-                    result = (double) firstNum / secondNum;
+                    result = firstNum / secondNum;
                     break;
             }
             System.out.println("결과: " + result);
-
+            resultList[index] = firstNum + " " + real_operator + " " + secondNum + " = " + result;
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String exit = sc.nextLine();
             if (exit.equals("exit")) {
                 break;
             }
+            index++;
         }
+//        for(String a : resultList){
+//            System.out.println(a);
+//        }
     }
 }
