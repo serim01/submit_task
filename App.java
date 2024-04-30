@@ -42,17 +42,20 @@ public class App {
                 resultList.remove(0);
             }
 
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            String inquiry = sc.nextLine();
+            if (inquiry.equals("inquiry")) {
+                System.out.println("결과값 ");
+                for (String s : resultList) {
+                    System.out.println(s);
+                }
+            }
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String exit = sc.nextLine();
             if (exit.equals("exit")) {
                 break;
             }
         }
-//        int b = 1;
-//        for(String a : resultList){
-//
-//            System.out.println(b + " :" + a);
-//            b++;
-//        }
     }
 }
