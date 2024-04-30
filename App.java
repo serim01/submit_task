@@ -12,5 +12,27 @@ public class App {
         sc.nextLine();
         String operator = sc.nextLine();
         char real_operator = operator.charAt(0);
+        double result = 0;
+        switch (real_operator) {
+            case '+':
+                result = firstNum + secondNum;
+                break;
+            case '-':
+                result = firstNum - secondNum;
+                break;
+            case '*':
+                result = firstNum * secondNum;
+                break;
+            case '/':
+                if(secondNum == 0){
+                    System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
+                    break;
+                }else {
+                    result = (double) firstNum / secondNum;
+                    break;
+                }
+        }
+        System.out.println("결과: " + result);
+
     }
 }
