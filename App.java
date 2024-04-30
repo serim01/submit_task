@@ -34,7 +34,14 @@ public class App {
                     break;
             }
             System.out.println("결과: " + result);
-            resultList[index] = firstNum + " " + real_operator + " " + secondNum + " = " + result;
+            if(index <= 9) {
+                resultList[index] = firstNum + " " + real_operator + " " + secondNum + " = " + result;
+            }else{
+                for(int i=0; i<9; i++){
+                    resultList[i] = resultList[i+1];
+                }
+                resultList[9] = firstNum + " " + real_operator + " " + secondNum + " = " + result;
+            }
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String exit = sc.nextLine();
             if (exit.equals("exit")) {
@@ -42,8 +49,11 @@ public class App {
             }
             index++;
         }
+//        int b = 1;
 //        for(String a : resultList){
-//            System.out.println(a);
+//
+//            System.out.println(b + " :" + a);
+//            b++;
 //        }
     }
 }
