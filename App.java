@@ -20,7 +20,7 @@ public class App {
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
             String remove = sc.nextLine();
             if (remove.equals("remove")) {
-                calculator.getResultList().remove(0);
+                calculator.removeResult();
             }
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             String inquiry = sc.nextLine();

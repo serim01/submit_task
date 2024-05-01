@@ -42,4 +42,9 @@ public class Calculator {
 
         return result;
     }
+    public void removeResult() {
+        if (!resultList.isEmpty()) {
+            resultList.remove(0);
+        }
+    }
 }
