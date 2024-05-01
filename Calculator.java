@@ -13,6 +13,10 @@ public class Calculator {
     }
     public Calculator(){ }
 
+    public  Calculator(ArrayList<String> resultList){
+        this.resultList = resultList;
+    }
+
     public int calculate(int firstNum, int secondNum, char operator) throws BadInputException{
 
         if (operator == '/' && secondNum == 0){

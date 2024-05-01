@@ -1,8 +1,10 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws BadInputException {
-        Calculator calculator = new Calculator();
+        ArrayList<String> resultList = new ArrayList<>();
+        Calculator calculator = new Calculator(resultList);
         Scanner sc = new Scanner(System.in);
 
         while (true) {
