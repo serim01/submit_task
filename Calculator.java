@@ -47,4 +47,14 @@ public class Calculator {
             resultList.remove(0);
         }
     }
+    public void inquiryResults() {
+        if (!resultList.isEmpty()) {
+            System.out.println("[저장된 연산결과 조회]");
+            for (String s : resultList) {
+                System.out.println(s);
+            }
+        }else{
+            System.out.println("저장된 연산결과가 없습니다.");
+        }
+    }
 }
