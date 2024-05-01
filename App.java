@@ -2,9 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) {
-        ArrayList<String> resultList = new ArrayList<String>();
-
+    public static void main(String[] args) throws BadInputException {
+        Calculator calculator = new Calculator();
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -17,40 +16,21 @@ public class App {
             String operator = sc.nextLine();
             char real_operator = operator.charAt(0);
 
-            int result = 0;
-
-            switch (real_operator) {
-                case '+':
-                    result = firstNum + secondNum;
-                    break;
-                case '-':
-                    result = firstNum - secondNum;
-                    break;
-                case '*':
-                    result = firstNum * secondNum;
-                    break;
-                case '/':
-                    result = firstNum / secondNum;
-                    break;
-            }
-            System.out.println("결과: " + result);
-            resultList.add(firstNum + " " + real_operator + " " + secondNum + " = " + result);
+            System.out.println("결과값 : " + calculator.calculate(firstNum, secondNum, real_operator));
 
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
             String remove = sc.nextLine();
             if (remove.equals("remove")) {
-                resultList.remove(0);
+                calculator.resultList.remove(0);
             }
-
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             String inquiry = sc.nextLine();
             if (inquiry.equals("inquiry")) {
                 System.out.println("결과값 ");
-                for (String s : resultList) {
+                for (String s : calculator.resultList) {
                     System.out.println(s);
                 }
             }
-
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String exit = sc.nextLine();
             if (exit.equals("exit")) {
