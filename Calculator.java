@@ -2,7 +2,16 @@ import java.util.ArrayList;
 
 public class Calculator {
     /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 */
-    ArrayList<String> resultList = new ArrayList<String>();
+    private ArrayList<String> resultList = new ArrayList<String>();
+
+    public ArrayList<String> getResultList() {
+        return resultList;
+    }
+
+    public void setResultList(ArrayList<String> resultList) {
+        this.resultList = resultList;
+    }
+    public Calculator(){ }
 
     public int calculate(int firstNum, int secondNum, char operator) throws BadInputException{
 
