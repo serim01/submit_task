@@ -33,9 +33,8 @@ public class App {
                     int secondNum = sc.nextInt();
                     System.out.print("사칙연산 기호를 입력하세요: ");
                     sc.nextLine();
-                    String operator = sc.nextLine();
-                    char real_operator = operator.charAt(0);
-                    result = arithmeticCalculator.calculate(firstNum, secondNum, real_operator);
+                    char operator = sc.nextLine().charAt(0);
+                    result = arithmeticCalculator.calculate(firstNum, secondNum, operator);
                     System.out.println("결과값 : " + result);
                     arithmeticCalculator.getResultList().add(firstNum + " " + operator + " " + secondNum + " = " + result);
 
