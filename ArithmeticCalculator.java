@@ -5,13 +5,15 @@ public class ArithmeticCalculator extends Calculator {
     private final SubtractOperator subtractOperator;
     private final MultiplyOperator multiplyOperator;
     private final DivideOperator divideOperator;
+    private  final ModOperator modOperator;
     public ArithmeticCalculator(ArrayList<String> resultList, AddOperator addOperator, SubtractOperator subtractOperator,
-                                MultiplyOperator multiplyOperator, DivideOperator divideOperator) {
+                                MultiplyOperator multiplyOperator, DivideOperator divideOperator, ModOperator modOperator) {
         super(resultList);
         this.addOperator = addOperator;
         this.subtractOperator = subtractOperator;
         this.multiplyOperator = multiplyOperator;
         this.divideOperator = divideOperator;
+        this.modOperator = modOperator;
     }
 
     public double calculate(int firstNum, int secondNum, char operator) throws BadInputException{
@@ -19,7 +21,7 @@ public class ArithmeticCalculator extends Calculator {
         if (operator == '/' && secondNum == 0){
             throw new BadInputException("나눗셈에서 분모에 0이 들어올 수 없습니다.");
         }
-        if (!(operator == '+' || operator == '-' || operator == '*' || operator == '/')){
+        if (!(operator == '+' || operator == '-' || operator == '*' || operator == '/'|| operator == '%')){
             throw  new BadInputException("사칙연산 기호를 정확히 입력해주세요");
         }
 
@@ -36,6 +38,9 @@ public class ArithmeticCalculator extends Calculator {
                 break;
             case '/':
                 result = divideOperator.operate(firstNum,secondNum);
+                break;
+            case '%':
+                result = modOperator.operate(firstNum,secondNum);
                 break;
         }
 
