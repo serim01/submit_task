@@ -1,9 +1,17 @@
 import java.util.ArrayList;
 
 public class ArithmeticCalculator extends Calculator {
-
-    public ArithmeticCalculator(ArrayList<String> resultList) {
+    private final AddOperator addOperator;
+    private final SubtractOperator subtractOperator;
+    private final MultiplyOperator multiplyOperator;
+    private final DivideOperator divideOperator;
+    public ArithmeticCalculator(ArrayList<String> resultList, AddOperator addOperator, SubtractOperator subtractOperator,
+                                MultiplyOperator multiplyOperator, DivideOperator divideOperator) {
         super(resultList);
+        this.addOperator = addOperator;
+        this.subtractOperator = subtractOperator;
+        this.multiplyOperator = multiplyOperator;
+        this.divideOperator = divideOperator;
     }
 
     public double calculate(int firstNum, int secondNum, char operator) throws BadInputException{
@@ -15,19 +23,19 @@ public class ArithmeticCalculator extends Calculator {
             throw  new BadInputException("사칙연산 기호를 정확히 입력해주세요");
         }
 
-        int result = 0;
+        double result = 0;
         switch (operator) {
             case '+':
-                result = firstNum + secondNum;
+                result = addOperator.operate(firstNum, secondNum);
                 break;
             case '-':
-                result = firstNum - secondNum;
+                result = subtractOperator.operate(firstNum,secondNum);
                 break;
             case '*':
-                result = firstNum * secondNum;
+                result = multiplyOperator.operate(firstNum,secondNum);
                 break;
             case '/':
-                result = firstNum / secondNum;
+                result = divideOperator.operate(firstNum,secondNum);
                 break;
         }
 
