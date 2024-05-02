@@ -1,50 +1,24 @@
 import java.util.ArrayList;
 
 public class ArithmeticCalculator extends Calculator {
-    private final AddOperator addOperator;
-    private final SubtractOperator subtractOperator;
-    private final MultiplyOperator multiplyOperator;
-    private final DivideOperator divideOperator;
-    private  final ModOperator modOperator;
-    public ArithmeticCalculator(ArrayList<String> resultList, AddOperator addOperator, SubtractOperator subtractOperator,
-                                MultiplyOperator multiplyOperator, DivideOperator divideOperator, ModOperator modOperator) {
+
+    public ArithmeticCalculator(ArrayList<String> resultList) {
         super(resultList);
-        this.addOperator = addOperator;
-        this.subtractOperator = subtractOperator;
-        this.multiplyOperator = multiplyOperator;
-        this.divideOperator = divideOperator;
-        this.modOperator = modOperator;
     }
 
     public double calculate(int firstNum, int secondNum, char operator) throws BadInputException{
-        //사칙연산
-        if (operator == '/' && secondNum == 0){
-            throw new BadInputException("나눗셈에서 분모에 0이 들어올 수 없습니다.");
-        }
-        if (!(operator == '+' || operator == '-' || operator == '*' || operator == '/'|| operator == '%')){
-            throw  new BadInputException("사칙연산 기호를 정확히 입력해주세요");
-        }
+        return operatorFactory(operator).operate(firstNum, secondNum);
+    }
 
-        double result = 0;
-        switch (operator) {
-            case '+':
-                result = addOperator.operate(firstNum, secondNum);
-                break;
-            case '-':
-                result = subtractOperator.operate(firstNum,secondNum);
-                break;
-            case '*':
-                result = multiplyOperator.operate(firstNum,secondNum);
-                break;
-            case '/':
-                result = divideOperator.operate(firstNum,secondNum);
-                break;
-            case '%':
-                result = modOperator.operate(firstNum,secondNum);
-                break;
-        }
-
-        return result;
+    private Operator operatorFactory(char operator) throws BadInputException {
+        return switch(operator){
+            case '+' ->  new AddOperator();
+            case '-' ->  new SubtractOperator();
+            case '*' ->  new MultiplyOperator();
+            case '/' ->  new DivideOperator();
+            case '%' ->  new ModOperator();
+            default -> throw new BadInputException("사칙연산 기호를 정확히 입력해주세요.");
+        };
     }
 
     @Override
