@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class AddOperator<T extends Number> implements Operator<T>{
     public final Class<T> type;
 

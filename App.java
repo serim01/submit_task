@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws BadInputException {
 
-        //ArithmeticCalculator<Double> arithmeticCalculator = new ArithmeticCalculator(new ArrayList<>(), Double.class);
-        ArithmeticCalculator<Integer> arithmeticCalculator = new ArithmeticCalculator(new ArrayList<>(), Integer.class);
+        //ArithmeticCalculator<Double> arithmeticCalculator = new ArithmeticCalculator<>(new ArrayList<>(), Double.class);
+        ArithmeticCalculator<Integer> arithmeticCalculator = new ArithmeticCalculator<>(new ArrayList<>(), Integer.class);
         CircleCalculator circleCalculator = new CircleCalculator(new ArrayList<>());
 
         Scanner sc = new Scanner(System.in);
@@ -14,12 +13,13 @@ public class App {
         while (true) {
             System.out.println("원의 넓이를 계산하고 싶으시면 1, 사칙연산을 진행하고 싶으시면 2를 입력해주세요.");
             int select = sc.nextInt();
+            double result = 0;
             switch (select) {
                 case 1:
                     System.out.print("원의 반지름을 입력하세요: ");
                     int radius = sc.nextInt();
                     sc.nextLine();
-                    double result = circleCalculator.calculate(radius);
+                    result = circleCalculator.calculate(radius);
                     System.out.println("결과값 : " + result);
                     circleCalculator.getResultList().add(radius + " * " + radius + " * pi = " + result);
                     System.out.println("저장된 원의 넓이 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");

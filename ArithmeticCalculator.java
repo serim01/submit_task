@@ -12,14 +12,14 @@ public class ArithmeticCalculator<T extends Number> extends Calculator {
         return operatorFactory(operator).operate(firstNum, secondNum);
     }//제네릭 메소드
 
-    private Operator<T> operatorFactory(char operator) throws BadInputException {
+    private Operator<T> operatorFactory(char operator){
         OperatorType operatorType = OperatorType.fromOperator(operator);
         return switch(operatorType){
-            case ADDITION ->  new AddOperator(type);
-            case SUBTRACTION ->  new SubtractOperator(type);
-            case MULTIPLICATION ->  new MultiplyOperator(type);
-            case DIVISION ->  new DivideOperator(type);
-            case MODULO ->  new ModOperator(type);
+            case ADDITION ->  new AddOperator<>(type);
+            case SUBTRACTION ->  new SubtractOperator<>(type);
+            case MULTIPLICATION ->  new MultiplyOperator<>(type);
+            case DIVISION ->  new DivideOperator<>(type);
+            case MODULO ->  new ModOperator<>(type);
         };
     }
 
@@ -38,7 +38,7 @@ public class ArithmeticCalculator<T extends Number> extends Calculator {
     //값을 예시처럼 int/double로 저장하지않고 String으로 저장하여 substring과 indexof를 가지고 결과값으로만 비교하여 추출하였음.
     public void printResultGreaterThan(double num){
         System.out.println("[결과값이 기준값보다 큰 연산결과]");
-        super.getResultList().stream().filter(result->Double.parseDouble(result.substring(result.indexOf("=")+2,result.length())) > num)
-                .forEach(f -> System.out.println(f));
+        super.getResultList().stream().filter(result->Double.parseDouble(result.substring(result.indexOf("=")+2)) > num)
+                .forEach(System.out::println);
     }
 }
