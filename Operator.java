@@ -1,3 +1,3 @@
-public interface Operator {
-    double operate(int num1, int num2) throws BadInputException;
+public interface Operator<T extends Number> {
+    T operate(T num1, T num2) throws BadInputException;
 }

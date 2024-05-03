@@ -4,7 +4,8 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws BadInputException {
 
-        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(new ArrayList<>());
+        //ArithmeticCalculator<Double> arithmeticCalculator = new ArithmeticCalculator(new ArrayList<>(), Double.class);
+        ArithmeticCalculator<Integer> arithmeticCalculator = new ArithmeticCalculator(new ArrayList<>(), Integer.class);
         CircleCalculator circleCalculator = new CircleCalculator(new ArrayList<>());
 
         Scanner sc = new Scanner(System.in);

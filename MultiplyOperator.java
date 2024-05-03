@@ -1,9 +1,14 @@
-import java.util.ArrayList;
+public class MultiplyOperator<T extends Number> implements Operator<T>{
+    public final Class<T> type;
 
-public class MultiplyOperator implements Operator{
+    public MultiplyOperator(Class<T> type){
+        this.type = type;
+    }
 
     @Override
-    public double operate(int firstNum, int secondNum){
-        return firstNum * secondNum;
+    public T operate(T firstNum, T secondNum){
+        Number result = firstNum.doubleValue() * secondNum.doubleValue();
+
+        return NumberConversionUtils.convertNumberToType(result, type);
     }
 }
