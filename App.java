@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class App {
@@ -38,7 +39,6 @@ public class App {
                     result = arithmeticCalculator.calculate(firstNum, secondNum, operator);
                     System.out.println("결과값 : " + result);
                     arithmeticCalculator.getResultList().add(firstNum + " " + operator + " " + secondNum + " = " + result);
-
                     System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                     String remove = sc.nextLine();
                     if (remove.equals("remove")) {
@@ -49,8 +49,16 @@ public class App {
                     if (inquiry.equals("inquiry")) {
                         arithmeticCalculator.inquiryResult();
                     }
+                    System.out.println("저장된 연산결과 중 입력한 값보다 큰 값들을 조회하시겠습니까? (lambda 입력시 조회)");
+                    String lambda = sc.nextLine();
+                    if (lambda.equals("lambda")) {
+                        System.out.println("기준 값을 입력하세요: ");
+                        double num = sc.nextDouble();
+                        arithmeticCalculator.printResultGreaterThan(num);
+                    }
             }
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
+            sc.nextLine();
             String exit = sc.nextLine();
             if (exit.equals("exit")) {
                 break;

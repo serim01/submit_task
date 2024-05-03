@@ -34,4 +34,11 @@ public class ArithmeticCalculator<T extends Number> extends Calculator {
             System.out.println("저장된 사칙연산결과가 없습니다.");
         }
     }
+    //저장된 결과 중 입력값보다 큰 결과값들을 출력.조회하는 메서드
+    //값을 예시처럼 int/double로 저장하지않고 String으로 저장하여 substring과 indexof를 가지고 결과값으로만 비교하여 추출하였음.
+    public void printResultGreaterThan(double num){
+        System.out.println("[결과값이 기준값보다 큰 연산결과]");
+        super.getResultList().stream().filter(result->Double.parseDouble(result.substring(result.indexOf("=")+2,result.length())) > num)
+                .forEach(f -> System.out.println(f));
+    }
 }
